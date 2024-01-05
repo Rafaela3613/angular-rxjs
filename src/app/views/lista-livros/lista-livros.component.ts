@@ -33,6 +33,7 @@ export class ListaLivrosComponent {
         console.log(erro)
         return throwError(() => new Error(this.mensagemErro ='Ops, ocorreu um erro. Recarregue a aplicação!'))
       })
+
     )
 
   livrosResultadoParaLivros(items: Item[]): LivroVolumeInfo[] {

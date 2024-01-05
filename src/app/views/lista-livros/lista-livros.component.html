@@ -14,10 +14,10 @@
     {{ mensagemErro }}
   </div>
   <div
-    class="resultados"
-    *ngIf="livrosEncontrados$ | async ">
-      {{ livrosResultado.totalItems}} resultados encontrados
-  </div>
+class="resultados"
+*ngIf="livrosEncontrados$ | async ">
+            {{ livrosResultado.totalItems}} resultados encontrados
+</div>
   <div
     class="container-card"
     *ngIf="livrosEncontrados$ | async as listaLivros, else telaInicial">

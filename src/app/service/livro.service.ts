@@ -16,4 +16,3 @@ export class LivroService {
     return this.http.get<LivrosResultado>(this.API, { params })
   }
 }
-

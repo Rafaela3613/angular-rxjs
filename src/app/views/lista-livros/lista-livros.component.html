@@ -3,19 +3,28 @@
   <div class="busca">
     <input
       type="search"
-      [(ngModel)]="campoBusca"
-      (keyup)="buscarLivros()"
+      [formControl]="campoBusca"
     >
     <button>
       <img src="assets/imagens/icone-busca.png" alt="Lupa de cor roxa">
     </button>
   </div>
   <p>Busque por assunto, autoria, nome...</p>
-<div class="container-card" *ngIf="listaLivros?.length > 0, else telaInicial">
-  <div *ngFor="let livro of listaLivros">
-    <app-livro [livro]="livro"></app-livro>
+  <div class="resultados mensagem-erro" *ngIf="mensagemErro">
+    {{ mensagemErro }}
   </div>
-</div>
+  <div
+    class="resultados"
+    *ngIf="livrosEncontrados$ | async ">
+      {{ livrosResultado.totalItems}} resultados encontrados
+  </div>
+  <div
+    class="container-card"
+    *ngIf="livrosEncontrados$ | async as listaLivros, else telaInicial">
+    <div *ngFor="let livro of listaLivros">
+      <app-livro [livro]="livro"></app-livro>
+    </div>
+  </div>
 <ng-template #telaInicial>
   <div class="imagens">
     <h1 class="titulo">Busque o livro <br> que quiser na <br> nossa estante!</h1>

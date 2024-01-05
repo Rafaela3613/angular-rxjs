@@ -7,19 +7,22 @@ import { LivroService } from 'src/app/service/livro.service';
   styleUrls: ['./lista-livros.component.css']
 })
 export class ListaLivrosComponent {
+[x: string]: any;
 
   listaLivros: [];
   campoBusca: string = '';
+  service: any;
 
-  constructor(private service: LivroService) { }
+  constructor(privateService: LivroService) { }
 
-  buscarLivro() {
-    this.service.buscar(this.campoBusca).subscribe(
-      (retornoAPI) => console.log(retornoAPI)
+  buscarLivros() {
+    this.service.buscar(this.campoBusca).subscribe({
+        next: retornoAPI => console.log(retornoAPI),
+        error: erro => console.error(erro),
+        complete: () => console.log('Observable completado')
+
+    }
+
     )
-  }
-
 }
-
-
-
+}

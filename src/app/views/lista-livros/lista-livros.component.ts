@@ -14,7 +14,9 @@ export class ListaLivrosComponent {
   constructor(private service: LivroService) { }
 
   buscarLivro() {
-    this.service.buscar(this.campoBusca)
+    this.service.buscar(this.campoBusca).subscribe(
+      (retornoAPI) => console.log(retornoAPI)
+    )
   }
 
 }
